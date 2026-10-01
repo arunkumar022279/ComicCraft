@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block title %}ComicCraft — Make Your Story{% endblock %}
+{% block content %}
+<main class="creator-shell">
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">AI STORY STUDIO</div>
+      <h1>Turn your idea into a <span>comic.</span></h1>
+      <p>Dream it. Describe it. Watch Gemini turn your imagination into a colorful comic adventure.</p>
+      <div class="hero-tags">
+        <span>✦ 5 cinematic panels</span>
+        <span>✦ AI illustrations</span>
+        <span>✦ PDF export</span>
+      </div>
+    </div>
+    <div class="mascot" aria-label="ComicCraft cartoon mascot">
+      <div class="burst">WOW!</div>
+      <div class="robot">
+        <div class="antenna"></div>
+        <div class="robot-head"><i></i><i></i><b></b></div>
+        <div class="robot-body"><span>✦</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="studio-card">
+    <div class="studio-header">
+      <div>
+        <div class="mini-label">CREATE YOUR UNIVERSE</div>
+        <h2>Build your comic</h2>
+      </div>
+      <div class="step-pill">01 / 01</div>
+    </div>
+
+    <form id="comic-form" action="/generate" method="post">
+      <div class="field full">
+        <label for="story_prompt">Story idea</label>
+        <textarea id="story_prompt" name="story_prompt" required maxlength="1000"
+          placeholder="Example: A tiny robot discovers a hidden moon garden and must save it before sunrise..."></textarea>
+        <div class="prompt-tools">
+          <span id="char-count">0 / 1000</span>
+          <div class="chips">
+            <button type="button" class="chip" data-prompt="A brave fox discovers a secret portal inside an enchanted forest">🌲 Enchanted</button>
+            <button type="button" class="chip" data-prompt="A student finds a mysterious time machine hidden under the school">⏰ Mystery</button>
+            <button type="button" class="chip" data-prompt="A tiny robot enters a city-wide cooking competition to save its friend">🤖 Funny</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="field">
+          <label>Main character</label>
+          <input name="character_name" value="Milo" placeholder="e.g. Luna" required>
+        </div>
+        <div class="field">
+          <label>Setting</label>
+          <select name="setting">
+            <option>Enchanted forest</option>
+            <option>Futuristic city</option>
+            <option>School</option>
+            <option>Outer space</option>
+            <option>Underwater kingdom</option>
+            <option>Magical village</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Story tone</label>
+          <select name="tone">
+            <option>Funny</option>
+            <option>Adventurous</option>
+            <option>Dramatic</option>
+            <option>Heartwarming</option>
+            <option>Mysterious</option>
+            <option>Epic</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Art style</label>
+          <select name="art_style">
+            <option>Cute cartoon</option>
+            <option>Comic book</option>
+            <option>Anime-inspired</option>
+            <option>Pixel art</option>
+            <option>Storybook</option>
+            <option>3D cartoon</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="style-strip">
+        <div>
+          <span class="mini-label">PANELS</span>
+          <div class="panel-selector">
+            <label><input type="radio" name="panels" value="3"> <span>3</span></label>
+            <label><input type="radio" name="panels" value="4"> <span>4</span></label>
+            <label><input type="radio" name="panels" value="5" checked> <span>5</span></label>
+            <label><input type="radio" name="panels" value="6"> <span>6</span></label>
+          </div>
+        </div>
+        <button class="create-btn" type="submit">
+          <span>CREATE MY COMIC</span><b>→</b>
+        </button>
+      </div>
+    </form>
+
+    <div id="loading" class="loading-overlay" hidden>
+      <div class="loading-book">
+        <div class="loading-page"></div>
+        <div class="loading-page"></div>
+        <div class="loading-page"></div>
+      </div>
+      <h3 id="loading-title">Drawing your universe...</h3>
+      <p id="loading-text">Gemini is writing the story, then illustrating each panel.</p>
+      <div class="progress-track"><div id="progress-bar"></div></div>
+      <div class="loading-steps"><span>✍ Story</span><span>🎨 Art</span><span>📖 Layout</span></div>
+    </div>
+  </section>
+
+  <section class="feature-row">
+    <div><strong>01</strong><h3>Imagine</h3><p>Give ComicCraft a simple idea.</p></div>
+    <div><strong>02</strong><h3>Generate</h3><p>Gemini builds the narrative and art.</p></div>
+    <div><strong>03</strong><h3>Share</h3><p>Preview it and export your finished comic.</p></div>
+  </section>
+</main>
+{% endblock %}
